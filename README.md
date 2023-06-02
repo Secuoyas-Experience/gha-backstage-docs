@@ -75,11 +75,16 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     name: docs
+    # el bloque `permissions` es necesario para 
+    # usar la autenticacion OIDC de AWS
+    permissions:
+      id-token: write
+      contents: read    
     steps:
       - uses: actions/checkout@v3
       - uses: Secuoyas-Experience/gha-backstage-docs@v1
         with:
-          AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          AWS_ROLE_TO_ASSUME_ARN: ${{ secrets.AWS_ROLE_TO_ASSUME_ARN }}
+          aws_bucket: ${{ secrets.AWS_BUCKET }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          aws_role_to_assume_arn: ${{ secrets.AWS_ROLE_TO_ASSUME_ARN }}
 ```
