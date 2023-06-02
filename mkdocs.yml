@@ -1,6 +1,5 @@
 site_name: 'gha-backstage-docs'
-docs_dir: .
 nav:
-  - README.md
+  - index.md
 plugins:
  - techdocs-core
