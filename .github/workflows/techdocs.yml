@@ -1,0 +1,17 @@
+name: 'docs'
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - ".github/workflows/techdocs.yml"
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    name: docs
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Secuoyas-Experience/gha-backstage-docs@v1
