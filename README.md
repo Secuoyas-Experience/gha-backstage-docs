@@ -78,4 +78,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: Secuoyas-Experience/gha-backstage-docs@v1
+        with:
+          AWS_BUCKET: ${{ secrets.AWS_BUCKET }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ROLE_TO_ASSUME_ARN: ${{ secrets.AWS_ROLE_TO_ASSUME_ARN }}
 ```

@@ -7,6 +7,15 @@ inputs:
   plugins:
     description: 'list of additional python plugin dependencies to add'
     required: false
+  AWS_ROLE_TO_ASSUME_ARN:
+    description: AWS role para poder subir ficheros
+    required: true
+  AWS_BUCKET:
+    description: AWS bucket
+    required: true
+  AWS_REGION:
+    description: AWS region
+    required: true
 
 runs:
   using: composite
@@ -41,12 +50,12 @@ runs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
-        role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME_ARN }}
-        aws-region: ${{ secrets.AWS_REGION }}
+        role-to-assume: ${{ inputs.AWS_ROLE_TO_ASSUME_ARN }}
+        aws-region: ${{ inputs.AWS_REGION }}
         role-session-name: techdocs-uploader-session
 
     - name: Upload to S3
       shell: bash
       run: |
         ls -l
-        aws s3 sync site ${{ secrets.AWS_BUCKET }}/default/component/${{ github.event.repository.name }}
+        aws s3 sync site ${{ inputs.AWS_BUCKET }}/default/component/${{ github.event.repository.name }}
