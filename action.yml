@@ -16,6 +16,14 @@ inputs:
   aws_region:
     description: AWS region
     required: true
+  componentName:
+    description: Name of the component inside Backstage (must be equal to catalog-info.yaml name)
+    default: ${{ github.event.repository.name }}
+    required: false
+  componentPath:
+    description: Path
+    required: false
+    default: .
 
 runs:
   using: composite
@@ -45,6 +53,7 @@ runs:
 
     - name: Generate docs site
       shell: bash
+      working-directory: ${{ inputs.componentPath }}
       run: techdocs-cli generate --no-docker --verbose
 
     - name: Configure AWS Credentials
@@ -56,6 +65,7 @@ runs:
 
     - name: Upload to S3
       shell: bash
+      working-directory: ${{ inputs.componentPath }}
       run: |
         ls -l
-        aws s3 sync site ${{ inputs.aws_bucket }}/default/component/${{ github.event.repository.name }}
+        aws s3 sync site ${{ inputs.aws_bucket }}/default/component/${{ inputs.componentName }}

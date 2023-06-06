@@ -3,3 +3,9 @@ nav:
   - index.md
 plugins:
  - techdocs-core
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets:
+      base_path: .

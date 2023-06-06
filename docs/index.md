@@ -4,6 +4,8 @@ Esta accion de Github permite generar y subir la documentacion del proyecto en e
 
 # Inputs
 
+- **componentName**: (opcional) Nombre del componente dentro de Backstage. Por defecto es el nombre del repositorio. Util para los monorepos.
+- **componentPath**: (opcional) Path dentro del repositorio donde se encuentra el componente. Por defecto es el directorio raiz. Util para los monorepos.
 - **aws_bucket**: bucket donde se subiran los ficheros
 - **aws_region**: region de AWS
 - **aws_role_to_assume_arn**: role de AWS con permisos para subir ficheros
