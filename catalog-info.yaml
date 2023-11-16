@@ -12,5 +12,5 @@ metadata:
 spec:
   type: library
   owner: infrastructure
-  system: secuoyas
+  system: Secuoyas-Experience
   lifecycle: production
