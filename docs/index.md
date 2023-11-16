@@ -8,7 +8,7 @@ Esta accion de Github permite generar y subir la documentacion del proyecto en e
 - **componentPath**: (opcional) Path dentro del repositorio donde se encuentra el componente. Por defecto es el directorio raiz. Util para los monorepos.
 - **aws_bucket**: bucket donde se subiran los ficheros
 - **aws_region**: region de AWS
-- **aws_role_to_assume_arn**: role de AWS con permisos para subir ficheros
+- **aws_role_to_assume_arn**: role de AWS con permisos para subir ficheros.
 
 # Ejemplo
 
